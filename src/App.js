@@ -2,6 +2,8 @@ import "./App.css";
 import { City, Input } from "./components";
 
 function App() {
+  const regExpPassword = /^[0-9A-Za-z]{5,10}([a-z]{0,2})?([A-Z]{0,2})?$/;
+
   return (
     <div className="App">
       <div className="app_top">
@@ -15,14 +17,15 @@ function App() {
       </div>
       <form action="#">
         <City />
-        <hr style={{ margin: "32px 0" }} />
+        <hr />
         <Input
-          last={true}
           type={"password"}
+          regexp={regExpPassword}
           header_text={"Пароль"}
           text={"Ваш новый пароль должен содержать не менее 5 символов."}
         />
         <Input
+          last={true}
           type={"password"}
           header_text={"Пароль еще раз"}
           text={
@@ -30,9 +33,8 @@ function App() {
             "на случай ошибки."
           }
         />
-        <hr style={{ margin: "32px 0" }} />
+        <hr />
         <Input
-          last={true}
           type={"email"}
           header_text={"Электронная почта"}
           text={"Можно изменить адрес, указанный при регистрации. "}
